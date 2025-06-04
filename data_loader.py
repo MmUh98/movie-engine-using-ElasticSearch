@@ -131,7 +131,10 @@ class MovieDataLoader:
                     "vote_average": {"type": "float"},
                     "genres": {"type": "keyword"},
                     "cast": {"type": "keyword"},
-                    "director": {"type": "keyword"}
+                    "director": {"type": "keyword"},
+                    "title_normalized": {
+                        "type": "keyword"
+                    }
                 }
             }
         }
@@ -152,6 +155,7 @@ class MovieDataLoader:
                 'input': movie['title'],
                 'weight': int(movie['vote_average'])
             }
+            movie['title_normalized'] = movie['title'].replace(" ", "").lower()
             self.es.index(index=index_name, id=movie['id'], document=movie)
             
         return len(movies)

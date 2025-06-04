@@ -128,6 +128,16 @@ class ContextEngine:
                 }
             })
             
+        # Add normalized title
+        should_clauses.append({
+            "term": {
+                "title_normalized": {
+                    "value": query.replace(" ", "").lower(),
+                    "boost": 5.0
+                }
+            }
+        })
+            
         # Function score for custom re-ranking
         return {
             "query": {
