@@ -30,9 +30,10 @@ class MovieDataLoader:
         self.base_url = "https://api.themoviedb.org/3"
         self.image_base_url = "https://image.tmdb.org/t/p/w500"
         self.es = Elasticsearch(
-            hosts=['http://127.0.0.1:9200'],
-            basic_auth=('elastic', 'dEteLgD8*4BwAFXo3CmH'),
-            verify_certs=False
+            hosts=['http://localhost:9200'],
+            verify_certs=False,
+            request_timeout=30,
+            retry_on_timeout=True
         )
 
     def fetch_popular_movies(self, num_pages=50):

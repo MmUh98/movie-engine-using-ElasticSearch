@@ -21,7 +21,7 @@ pip install -r requirements.txt
 Create a `.env` file with:
 ```
 TMDB_API_KEY=your_tmdb_api_key
-ELASTICSEARCH_URL=http://127.0.0.1:9200
+ELASTICSEARCH_URL=http://127.0.0.1:9200(use your local host)
 ELASTICSEARCH_USER=elastic
 ELASTICSEARCH_PASSWORD=your_password
 ```
